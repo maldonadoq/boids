@@ -1,4 +1,5 @@
 import pygame as pg
+import numpy as np
 import time
 import sys
 
@@ -31,8 +32,15 @@ if __name__ == "__main__":
 
 		eng.update()
 
-		for boid in eng.boids:
-			pg.draw.circle(screen, (0,255,0), boid.position.astype(int), 2)
+		pg.draw.circle(screen, (255,0,0), eng.target.astype(int), 4)
+
+		for boid in eng.boids:			
+			init = boid.position.astype(int)
+			end = init + 7*(boid.velocity / np.linalg.norm(boid.velocity))
+			#end = init + boid.velocity
+
+			pg.draw.circle(screen, (0,255,0), init.astype(int), 2)
+			pg.draw.line(screen, (0, 0, 255), init.astype(int), end.astype(int))
 
 		pg.display.flip()
 		time.sleep(0.05)
