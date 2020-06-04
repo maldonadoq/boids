@@ -10,7 +10,7 @@ if __name__ == "__main__":
 	pg.init()
 
 	height, width = 600, 1000
-	numbers = 25
+	numbers = 50
 
 	eng = Engine(width, height)
 	eng.initialization(numbers)
